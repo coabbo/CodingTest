@@ -1,24 +1,29 @@
-import java.util.*;
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+ 
 class Solution
 {
-	public static void main(String args[]) throws Exception
-	{
-		Scanner sc = new Scanner(System.in);
-		int T;
-		T=sc.nextInt();
-        ArrayList<Integer> arrList = new ArrayList<>();
-
-		for(int test_case = 1; test_case <= T; test_case++)
-		{
-            arrList.clear();
-            for(int i=0; i<10; i++){
-                int num = sc.nextInt();
-                arrList.add(num);
+    public static void main(String args[]) throws Exception
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+        StringBuilder sb = new StringBuilder();
+        int[] numArr = new int[10];
+ 
+        int T = Integer.parseInt(br.readLine());
+         
+        for(int test_case = 1; test_case <= T; test_case++)
+        {       
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            for(int i = 0; i < numArr.length; i++) {
+                numArr[i] = Integer.parseInt(st.nextToken());
             }
-            
-            int max = Collections.max(arrList);
-            System.out.println("#" + test_case + " " + max);
-		}
-	}
+             
+            Arrays.sort(numArr);
+ 
+            sb.append("#").append(test_case).append(" ").append(numArr[numArr.length-1]).append("\n");
+        }
+        System.out.print(sb.toString());
+    }
 }
