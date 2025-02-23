@@ -1,32 +1,39 @@
-import java.util.*;
-
-class Solution
-{
-	public static void main(String args[]) throws Exception
-	{
-		Scanner sc = new Scanner(System.in);
-		int T;
-		T=sc.nextInt();
-
-		for(int test_case = 1; test_case <= T; test_case++)
-		{
-            System.out.print("#" + test_case + " ");
-            
-            int num = sc.nextInt();
-            ArrayList<Integer> numList = new ArrayList<>();
-            
-            for(int i=0; i<num; i++){
-            	int temp = sc.nextInt();
-                numList.add(temp);
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+ 
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+         
+        int TC = Integer.parseInt(br.readLine());
+        for (int testCase = 1; testCase <= TC; testCase++) {
+            int N = Integer.parseInt(br.readLine());
+            int[] numArr = new int[N];
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            for (int i = 0; i < numArr.length; i++) {
+                numArr[i] = Integer.parseInt(st.nextToken());
             }
-            
-            Collections.sort(numList);
-            
-            for(int nums : numList){
-            	System.out.print(nums + " ");
+             
+            for (int i = 0; i < numArr.length; i++) {
+                int j; //정렬 포인트
+                int key = numArr[i];
+                 
+                for(j = i-1; j >= 0 && key < numArr[j]; j--) {
+                    numArr[j+1] = numArr[j];
+                }
+                 
+                numArr[j+1] = key;
             }
-
-            System.out.println("");
-		}
-	}
+             
+            sb.append("#").append(testCase).append(" ");
+            for (int k = 0; k < numArr.length; k++) {
+                sb.append(numArr[k]).append(" ");
+                 
+            }
+            sb.append("\n");
+        }
+        System.out.println(sb.toString());
+    }
 }
