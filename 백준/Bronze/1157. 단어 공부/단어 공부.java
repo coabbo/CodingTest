@@ -14,7 +14,7 @@ public class Main {
 		for (int i = 0; i < input.length(); i++) {
 			String key = "" + input.charAt(i);
 			if(!inputMap.containsKey(key)) {
-				inputMap.put(key, 0);
+				inputMap.put(key, 1);
 			}
 			else {
 				inputMap.put(key, inputMap.get(key)+1);
