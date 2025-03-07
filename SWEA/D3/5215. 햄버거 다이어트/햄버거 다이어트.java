@@ -1,53 +1,49 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
-class Solution
-{
-    public static void main(String args[]) throws Exception
-    {
-    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    	StringBuilder sb = new StringBuilder();
-    	int T = Integer.parseInt(br.readLine());
-    	
-    	for (int testCase = 1; testCase <= T; testCase++) {
-			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-			
-			int N = Integer.parseInt(st.nextToken()); // 재료의 수
-			int L = Integer.parseInt(st.nextToken()); // 제한 칼로리
-			
-			int[] tasteScore = new int[N]; // 맛 점수
-			int[] calorie = new int[N]; // 칼로리
+public class Solution {
+
+	static int N, L; //N : 재료의 수, L : 제한 칼로리
+	static int[] cals;
+	static int[] scores;
+	static int ans;
+	
+    public static void main(String[] args) throws Exception {
+    	Scanner sc = new Scanner(System.in);
+    	int T = sc.nextInt();
+    	for (int tc = 1; tc <= T; tc++) {
+			N = sc.nextInt();
+			L = sc.nextInt();
+			scores = new int[N];
+			cals = new int[N];
 			
 			for (int i = 0; i < N; i++) {
-				st = new StringTokenizer(br.readLine(), " ");
-				tasteScore[i] = Integer.parseInt(st.nextToken());
-				calorie[i] = Integer.parseInt(st.nextToken());
-			}
+				scores[i] = sc.nextInt();
+				cals[i] = sc.nextInt();
+			}//input 끝
 			
-			int max = 0;
-			int totalCase = 1 << N; // 2^N, 모든 재료 선택 경우의 수			
+			ans = 0;
 			
-			for(int i=0; i < totalCase; i++) {
-				
-				int tasteScoreSum = 0;
-				int calorieSum = 0;
-				
-				for (int j = 0; j < N; j++) {
-					// j번째 재료 선택
-					if ((i & (1 << j)) != 0) {
-						tasteScoreSum += tasteScore[j];
-						calorieSum += calorie[j];
-					}
-				}
-				
-				if (calorieSum <= L) { // 제한 칼로리 안 넘으면 최댓값 갱신
-					max = Math.max(max, tasteScoreSum);
-				}
-			}
-			
-			sb.append("#").append(testCase).append(" ").append(max).append("\n");
-		}
-    	System.out.print(sb.toString());
-    }
+			make(0, 0, 0);
+			System.out.println("#" + tc + " " + ans);
+		}//tc
+    }//main
+    
+    //1. 비트마스킹
+    //2. 재귀함수 부분집합
+    //3. 백트래킹
+    
+    static void make(int idx, int sumCal, int sumScore) {
+    	if(sumCal > L) return; //idx-1번까지의 재료를 이용하여 만들었는데....
+    	
+    	if(idx == N) {
+    		//베스트인지는 모르겠지만 일단 햄버거는 만들어졌다!
+    		if(ans < sumScore)
+    			ans = sumScore; //갱신
+    		return;
+    	}
+    	//뽑는 경우
+    	make(idx+1, sumCal + cals[idx], sumScore + scores[idx]);
+    	//안뽑는 경우
+    	make(idx+1, sumCal, sumScore);
+    }   
 }
