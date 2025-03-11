@@ -19,13 +19,15 @@ public class Main {
 		
 		String[] stringArr = arr.toArray(new String[0]);
 		
-		Arrays.sort(stringArr); // 길이가 같으면 사전 순으로
-		
 		Arrays.sort(stringArr, new Comparator<String>() { // 길이가 짧은 것부터
 
 			@Override
 			public int compare(String s1, String s2) {
-				return s1.length() - s2.length();
+				if(s1.length() == s2.length()) {
+					return s1.compareTo(s2);
+				} else {
+					return s1.length() - s2.length();
+				}
 			}
 		});
 		
