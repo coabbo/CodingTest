@@ -25,9 +25,8 @@ public class Main {
 			public int compare(String[] s1, String[] s2) {
 				if(Integer.parseInt(s1[0]) != Integer.parseInt(s2[0])) { // 나이가 다르면 나이 오름차순
 					return Integer.parseInt(s1[0]) - Integer.parseInt(s2[0]);
-				} else { // 나이가 같으면 먼저 가입하는 사람이 앞
-					return s1[0].compareTo(s2[0]);
 				}
+				return 0;
 			}
 		});
 		
