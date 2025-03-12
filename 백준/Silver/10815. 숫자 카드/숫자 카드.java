@@ -8,6 +8,8 @@ public class Main {
 
 	public static void main(String args[]) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
 		int N = Integer.parseInt(br.readLine());
 		Set<Integer> sanggenCardSet = new HashSet<>();
 		
@@ -21,11 +23,12 @@ public class Main {
 		st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < M; i++) {
 			if(sanggenCardSet.contains(Integer.parseInt(st.nextToken()))){
-				System.out.print("1 ");
+				sb.append("1 ");
 			}
 			else {
-				System.out.print("0 ");
+				sb.append("0 ");
 			}
 		}
+		System.out.println(sb.toString());
 	}
 }
