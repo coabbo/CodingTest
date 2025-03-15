@@ -9,6 +9,7 @@ public class Main {
 	private static int M; // 중복 없이 M개를 고를 예정
 	private static int[] result; // 결과 배열
 	private static boolean[] visited; // 방문 체크
+	private static StringBuilder sb = new StringBuilder();
 	
 	public static void main(String args[]) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,6 +22,8 @@ public class Main {
 		visited = new boolean[N+1];
 		
 		perm(0);
+		
+		System.out.println(sb.toString());
 	}
 
 	// idx : 현재까지 선택된 원소의 개수
@@ -28,9 +31,9 @@ public class Main {
 		// 기저 조건
 		if(idx == M) {
 			for (int i = 0; i < M; i++) {
-				System.out.print(result[i] + " ");
+				sb.append(result[i]).append(" ");
 			}
-			System.out.println("");
+			sb.append("\n");
 			return;
 		}
 		
