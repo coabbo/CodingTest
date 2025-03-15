@@ -19,7 +19,7 @@ public class Main {
 		M = Integer.parseInt(st.nextToken());
 		
 		result = new int[M];
-		visited = new boolean[N+1];
+		visited = new boolean[N];
 		
 		perm(0);
 		
@@ -38,14 +38,14 @@ public class Main {
 		}
 		
 		// 재귀 부분
-		for (int i = 1; i <= N; i++) {
+		for (int i = 0; i < N; i++) {
 			
 			// 사용했으면 쳐내기
 			if(visited[i]) {
 				continue;
 			}
 			
-			result[idx] = i;
+			result[idx] = i + 1;
 			visited[i] = true; // 사용했어!
 			perm(idx + 1);
 			visited[i] = false; // 원상복구
