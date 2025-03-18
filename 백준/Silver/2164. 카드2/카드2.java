@@ -18,8 +18,7 @@ public class Main {
 		
 		while(deque.size() != 1) {
 			deque.removeFirst();
-			int tmp = deque.removeFirst();
-			deque.addLast(tmp);
+			deque.addLast(deque.removeFirst());
 		}
 		
 		sb.append(deque.peek());
