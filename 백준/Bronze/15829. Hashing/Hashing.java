@@ -7,14 +7,15 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		int L = Integer.parseInt(br.readLine());
+		int MOD = 1234567891;
 		String S = br.readLine();
 		
-		int answer = 0;
+		long answer = 0;		
+		long count = 1;
 		
-		int count = 0;
-		
-		for (int i = 0; i < L; i++) {
-			answer += (S.charAt(i) - 96) * Math.pow(31, count++);
+		for (int i = 0; i < L; i++) {			
+			answer = (answer + (S.charAt(i) - 96) * count) % MOD;
+			count = (count * 31) % MOD;
 		}
 		
 		System.out.println(answer);
