@@ -81,5 +81,5 @@ public class Solution {
 			arr[index] = i;
 			perm(index+1, sum+i, arr);
 		}
-    }
+	}
 } // end of class
