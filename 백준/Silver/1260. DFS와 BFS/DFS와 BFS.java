@@ -38,7 +38,7 @@ public class Main {
 	}
 
 	private static String dfs(int v) {
-		Queue<Integer> route = new ArrayDeque<>();  // 경로 
+		StringBuilder route = new StringBuilder();  // 경로 
 		Stack<Integer> exPlan = new Stack<>(); //실행 계획
 		boolean[] visited = new boolean[N+1]; //정점의 방문여부 확인, 0번은 안 씀
 		
@@ -53,7 +53,7 @@ public class Main {
 
 			//실제 방문했을 때 방문 찍어야 함!!!!!
 			visited[vertex] = true; //방문완료
-			route.add(vertex); //경로에 넣음
+			route.append(vertex + " "); //경로에 넣음
 			
 			int[] relation = graph[vertex]; //현재 값의 연결관계 찾기
 			
@@ -64,20 +64,13 @@ public class Main {
 			}
 		}
 		
-		StringBuilder sb = new StringBuilder();
-		
-		int routeSize = route.size();
-		for (int i = 0; i < routeSize; i++) {
-			sb.append(route.poll()).append(" ");
-		}
-		
-		String ans = sb.toString();
+		String ans = route.toString();
 		
 		return ans;
 	}
 	
 	private static String bfs(int v) {
-		Queue<Integer> route = new ArrayDeque<>();  // 경로 
+		StringBuilder route = new StringBuilder();  // 경로
 		Queue<Integer> exPlan = new ArrayDeque<>(); //실행 계획
 		boolean[] visited = new boolean[N+1]; //정점의 방문여부 확인, 0번은 안 씀
 		
@@ -92,7 +85,7 @@ public class Main {
 			
 			//실제 방문했을 때 방문 찍어야 함!!!!!
 			visited[vertex] = true; //방문완료
-			route.add(vertex); //경로에 넣음
+			route.append(vertex + " "); //경로에 넣음
 			
 			
 			int[] relation = graph[vertex]; //현재 값의 연결관계 찾기
@@ -104,14 +97,7 @@ public class Main {
 			}
 		}
 		
-		StringBuilder sb = new StringBuilder();
-		
-		int routeSize = route.size();
-		for (int i = 0; i < routeSize; i++) {
-			sb.append(route.poll()).append(" ");
-		}
-		
-		String ans = sb.toString();
+		String ans = route.toString();
 		
 		return ans;
 	}
