@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -63,8 +62,6 @@ public class Main {
 				q.add(new int[] {nr, nc});
 			}
 		}
-		
-		System.out.println(Arrays.deepToString(dist));
 		
 		return -1; //탈출 못해~
 	}
