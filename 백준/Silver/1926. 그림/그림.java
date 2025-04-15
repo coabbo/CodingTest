@@ -65,7 +65,7 @@ public class Main {
 				
 				//1. 범위를 벗어났으면 쳐내
 				if(nr < 0 || nc < 0 || nr >= N || nc >= M) continue;
-				//2. 그림의 일부분이 아니면 쳐내 / 이미 거리가 결정되어 있으면 쳐내
+				//2. 그림의 일부분이 아니면 쳐내 / 이미 방문했으면 쳐내
 				if(map[nr][nc] == 0 || visited[nr][nc]) continue;
 				
 				visited[nr][nc] = true;
