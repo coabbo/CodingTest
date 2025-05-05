@@ -17,7 +17,10 @@ public class Main {
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
-		
+
+		// 슬라이딩 윈도우
+		// end로 구간을 확장하고, sum >= S가 될 때마다
+		// start를 옮겨가며(구간을 축소) 최소 길이를 갱신한다.
 		int minLen = Integer.MAX_VALUE;
 		int sum = 0;
 		int start = 0;
