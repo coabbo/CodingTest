@@ -9,58 +9,37 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-
 		int N = Integer.parseInt(st.nextToken()); // 임스와 같이 플레이하기를 신청한 횟수
 		String G = st.nextToken(); // 플레이할 게임의 종류
-		Set<String> participant = new HashSet<>();
-
-		int play = 0;
-
-		switch (G) {
-		case "Y":
-			for (int i = 0; i < N; i++) {
-				String s = br.readLine();
-				if (participant.contains(s))
-					continue;
-
-				participant.add(s);
-				play++;
-			}
-			break;
-			
-		case "F":
-			int temp = 0;
-			for (int i = 0; i < N; i++) {
-				String s = br.readLine();
-				if (participant.contains(s))
-					continue;
-				participant.add(s);
-				temp++;
-				
-				if(temp == 2) {
-					temp = 0;
-					play++;
-				}
-			}
-			break;
 		
-		case "O":
-			temp = 0;
-			for (int i = 0; i < N; i++) {
-				String s = br.readLine();
-				if (participant.contains(s))
-					continue;
-				participant.add(s);
-				temp++;
-				
-				if(temp == 3) {
-					temp = 0;
+		int groupSize = 0;
+		switch (G) {
+			case "Y":
+				groupSize = 1;
+				break;
+			case "F":
+				groupSize = 2;
+				break;
+			case "O":
+				groupSize = 3;
+				break;
+			}
+
+		Set<String> participant = new HashSet<>();
+		int play = 0;
+		int count = 0;
+		
+		for (int i = 0; i < N; i++) {
+			String name = br.readLine();
+			if(participant.add(name)) {
+				count++;
+				if(count == groupSize) {
 					play++;
+					count = 0;
 				}
 			}
-			break;
 		}
-
+		
 		System.out.println(play);
 	}
 }
