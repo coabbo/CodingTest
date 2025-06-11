@@ -109,7 +109,8 @@ a:				for (int p = 0; p < bingoArr.length; p++) {
 		int bingoTempCount = 0;
 		int count = 0;
 		for (int i = 0; i < bingoArr.length; i++) {
-			if(bingoArr[i][4-i] == 0) {
+			int N = bingoArr.length;
+			if(bingoArr[i][N-1-i] == 0) {
 					count++;
 			}
 		}
