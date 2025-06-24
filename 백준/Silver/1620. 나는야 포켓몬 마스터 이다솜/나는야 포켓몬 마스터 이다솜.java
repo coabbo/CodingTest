@@ -26,7 +26,7 @@ public class Main {
 		for (int i = 0; i < M; i++) {
 			String s = br.readLine();
 			
-			if(s.charAt(0) >= '0' && s.charAt(0) <= '9') {
+			if(Character.isDigit(s.charAt(0))) {
 				int index = Integer.parseInt(s);
 				sb.append(indexToNameMap.get(index)).append("\n");
 			}
