@@ -31,9 +31,7 @@ public class Main {
 			long count = 0;
 			
 			for (int i = 0; i < cookie.length; i++) {
-				if(cookie[i] >= mid) {
-					count += cookie[i] / mid;
-				}
+				count += cookie[i] / mid;
 			}
 			
 			if(M <= count) {
