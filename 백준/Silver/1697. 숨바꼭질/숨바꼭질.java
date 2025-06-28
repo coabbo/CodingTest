@@ -58,8 +58,6 @@ public class Main {
 				break;
 			}
 			
-			if(curr < 0 || curr > 100000) continue;
-			
 			for (int v : graph[curr]) {
 				if(v < 0 || v > 100000) continue;
 				
