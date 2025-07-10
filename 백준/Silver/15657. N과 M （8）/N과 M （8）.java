@@ -32,11 +32,11 @@ public class Main { ;
         System.out.println(sb.toString());
     }
 
-    // idx : 이번에 고려할 인덱스
-    // sidx : 뽑은 인덱스
-    private static void backtrack(int idx, int sidx) {
+    // start : 이번에 고려할 인덱스
+    // depth : 지금까지 채운 자리
+    private static void backtrack(int start, int depth) {
         // 종료조건
-        if(sidx == M) {
+        if(depth == M) {
             for (int i = 0; i < M; i++) {
                 sb.append(result[i]).append(" ");
             }
@@ -45,9 +45,9 @@ public class Main { ;
         }
 
         // 재귀조건
-        for (int i = idx; i < N; i++) {
-            result[sidx] = arr[i];
-            backtrack(i, sidx + 1);
+        for (int i = start; i < N; i++) {
+            result[depth] = arr[i];
+            backtrack(i, depth + 1);
         }
     }
 }
