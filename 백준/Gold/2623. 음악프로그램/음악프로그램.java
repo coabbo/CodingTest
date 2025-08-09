@@ -57,10 +57,11 @@ public class Main {
 		}
 		
 		// 2. 큐가 공백 상태가 될 때까지 반복 -> 하나 꺼내서 간선 제거하고(진입차수 하나 깎기) -> 0되면 새롭게 넣음
-		List<Integer> answer = new ArrayList<>();
+		int count = 0;
 		while(!q.isEmpty()) {
 			int curr = q.poll();
-			answer.add(curr);
+			sb.append(curr).append("\n");
+			count++;
 			
 			for (int v : adj[curr]) {
 				degree[v]--;
@@ -71,10 +72,8 @@ public class Main {
 			}
 		}
 		
-		if(answer.size() == N) {
-			for (int v : answer) {
-				System.out.println(v);
-			}
+		if(count == N) {
+			System.out.println(sb.toString());
 		}
 		else {
 			System.out.println(0);
