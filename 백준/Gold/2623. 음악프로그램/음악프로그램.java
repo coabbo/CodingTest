@@ -31,7 +31,6 @@ public class Main {
 		// 간선 정보 읽기
 		for (int i = 0; i < M; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
-			List<Integer> list = new ArrayList<>();
 			int num = Integer.parseInt(st.nextToken()); // 보조 PD가 담당한 가수의 수
 			
 			int A = Integer.parseInt(st.nextToken());
