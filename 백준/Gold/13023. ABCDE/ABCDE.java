@@ -47,6 +47,8 @@ public class Main {
 	}
 
 	public static void dfs(int node, int depth) {
+		if (answer == 1) return; // 이미 답 찾았으면 더 안 내려감
+		
 		// 1. 종료 조건
 		if(depth == 4) {
 			answer = 1;
@@ -59,6 +61,8 @@ public class Main {
 				visited[next] = true; // 방문 처리
 				dfs(next, depth + 1); // 깊이 증가시키면서 탐색
 				visited[next] = false; // 백트래킹 (다른 경로 탐색을 위해 되돌리기)
+				
+				if (answer == 1) return; // 찾았으면 더 안 탐색
 			}
 		}
 	}
