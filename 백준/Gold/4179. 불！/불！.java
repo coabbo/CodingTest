@@ -104,8 +104,7 @@ public class Main {
                 if(map[nr][nc] == '.'){
                     jihunDist[nr][nc] = jihunDist[cr][cc] + 1;
 
-                    if(jihunDist[nr][nc] < fireDist[nr][nc]) q.add(new int[] {nr, nc});
-                    if(fireCount == 0) q.add(new int[] {nr, nc});
+                    if(fireDist[nr][nc] == -1 || jihunDist[nr][nc] < fireDist[nr][nc]) q.add(new int[] {nr, nc});
                 }
             }
         }
