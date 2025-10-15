@@ -34,7 +34,7 @@ public class Main {
             int sum = 0;
             int count = 0; // 포함된 원소의 개수를 세기 위한 변수
 
-            // visited[i] == true인 arr[i]만 결과에 포함
+            // visited[i] == true인 num[i]만 결과에 포함
             for (int i = 0; i < n; i++) {
                 if(visited[i]) {
                     sum += num[i];
@@ -47,7 +47,7 @@ public class Main {
             return;
         }
 
-        // 2. arr[idx] 포함
+        // 2. num[idx] 포함
         visited[idx] = true;
         backtrack(idx + 1, n);
 
