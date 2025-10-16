@@ -5,8 +5,6 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        // <일 경우 >가 나올 때까지 문자열을 건들이지 않고 계속 저장하다가, >가 나오면 스택에 저장하고 출력한다.
-        // 일반 문자열들은 그냥 계속 저장하다가 마지막에 거꾸로 출력한다.
         String S = br.readLine();
         StringBuilder answer = new StringBuilder();
 
