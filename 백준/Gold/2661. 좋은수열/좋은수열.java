@@ -9,7 +9,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = Integer.parseInt(br.readLine());
 		
-		dfs("1");
+		dfs("");
 	}
 
 	private static void dfs(String s) {
