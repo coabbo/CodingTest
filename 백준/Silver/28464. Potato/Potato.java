@@ -17,23 +17,22 @@ public class Main {
 		
 		Arrays.sort(potato);
 		
-		int pIndex = potato.length - 1;
-		int sIndex = 0;
+		int left = 0;
+		int right = N - 1;
 		
 		int pPotato = 0;
 		int sPotato = 0;
 		
-		int count = 0;
-		while(true) {
-			pPotato += potato[pIndex--];
-			count++;
+		boolean pTurn = true;
+		while(left <= right) {
+			if(pTurn) {
+				pPotato += potato[right--];
+			}
+			else {
+				sPotato += potato[left++];
+			}
 			
-			if(count == N) break;
-			
-			sPotato += potato[sIndex++];
-			count++;
-			
-			if(count == N) break;
+			pTurn = !pTurn;
 		}
 		
 		System.out.println(sPotato + " " + pPotato);
