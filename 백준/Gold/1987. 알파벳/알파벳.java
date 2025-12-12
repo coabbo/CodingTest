@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -10,7 +8,7 @@ public class Main {
 	private static int C;
 	private static int maxCount = 0;
 	private static char[][] map;
-	private static Set<Character> visited;
+	private static boolean[] visited;
 	
 	private static int[] dr = {-1, 1, 0, 0};
 	private static int[] dc = {0, 0, -1, 1};
@@ -30,26 +28,26 @@ public class Main {
 			}
 		}
 		
-		visited = new HashSet<>();
-		dfs(0, 0);
+		visited = new boolean[26];
+		dfs(0, 0, 1);
 		
 		System.out.println(maxCount);
 	}
 
-	private static void dfs(int r, int c) {
-		visited.add(map[r][c]);
-		maxCount = Math.max(maxCount, visited.size());
+	private static void dfs(int r, int c, int count) {
+		visited[map[r][c] - 'A'] = true;
+		maxCount = Math.max(maxCount, count);
 		
 		for (int d = 0; d < 4; d++) {
 			int nr = r + dr[d];
 			int nc = c + dc[d];
 			
 			if(nr < 0 || nc < 0 || nr >= R || nc >= C) continue;
-			if(visited.contains(map[nr][nc])) continue;
+			if(visited[map[nr][nc] - 'A']) continue;
 			
-			dfs(nr, nc);
+			dfs(nr, nc, count + 1);
 			
-			visited.remove(map[nr][nc]);
+			visited[map[nr][nc] - 'A'] = false;
 		}
 	}
 }
