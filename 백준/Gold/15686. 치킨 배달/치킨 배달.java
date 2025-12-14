@@ -46,25 +46,7 @@ public class Main {
 
 	public static void comb(int start, int depth) {
 		if(depth == M) {
-			int tempDistance = 0;
-			
-			// 치킨집 M개 다 뽑았으면 치킨 거리 계산
-			for (int i = 0; i < home.size(); i++) {
-				int distance = Integer.MAX_VALUE;
-				int[] homeLocation = home.get(i);
-				
-				for (int j = 0; j < chooseChicken.length; j++) {
-					int idx = chooseChicken[j];
-					int[] chickenLocation = originalChicken.get(idx);
-					
-					int temp = Math.abs(homeLocation[0] - chickenLocation[0]) + Math.abs(homeLocation[1] - chickenLocation[1]);
-					distance = Math.min(distance, temp);
-				}
-				
-				tempDistance += distance;
-			}
-			
-			answer = Math.min(answer, tempDistance);
+			calculateDistance();
 			return;
 		}
 		
@@ -73,5 +55,27 @@ public class Main {
 			chooseChicken[depth] = i;
 			comb(i + 1, depth + 1);
 		}
+	}
+
+	public static void calculateDistance() {
+		int tempDistance = 0;
+		
+		// 치킨집 M개 다 뽑았으면 치킨 거리 계산
+		for (int i = 0; i < home.size(); i++) {
+			int distance = Integer.MAX_VALUE;
+			int[] homeLocation = home.get(i);
+			
+			for (int j = 0; j < chooseChicken.length; j++) {
+				int idx = chooseChicken[j];
+				int[] chickenLocation = originalChicken.get(idx);
+				
+				int temp = Math.abs(homeLocation[0] - chickenLocation[0]) + Math.abs(homeLocation[1] - chickenLocation[1]);
+				distance = Math.min(distance, temp);
+			}
+			
+			tempDistance += distance;
+		}
+		
+		answer = Math.min(answer, tempDistance);
 	}
 }
