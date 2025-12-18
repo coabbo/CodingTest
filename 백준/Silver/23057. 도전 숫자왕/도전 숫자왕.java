@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 public class Main {
 	public static int N;
 	public static int[] arr;
-	public static int[] combRes;
 	public static Set<Integer> sumSet;
 
 	public static void main(String[] args) throws IOException {
@@ -26,28 +25,21 @@ public class Main {
 		}
 		
 		sumSet = new HashSet<>();
-		for (int i = 1; i <= N; i++) {
-			combRes = new int[i];
-			comb(0, 0, i);
-		}
+		subset(0, 0);
 		
 		System.out.println(M - sumSet.size());
 	}
 
-	private static void comb(int start, int depth, int count) {
-		if(depth == count) {
-			int sum = 0;
-			for (int i = 0; i < combRes.length; i++) {
-				sum += combRes[i];
-			}
-			
-			sumSet.add(sum);
+	private static void subset(int idx, int sum) {
+		if(idx == N) {
+			if(sum > 0) sumSet.add(sum);
 			return;
 		}
 		
-		for (int i = start; i < N; i++) {
-			combRes[depth] = arr[i];
-			comb(i + 1, depth + 1, count);
-		}
+		// 안 고른 경우
+		subset(idx + 1, sum);
+		
+		// 고른 경우
+		subset(idx + 1, sum + arr[idx]);
 	}
 }
