@@ -5,18 +5,18 @@ import java.io.InputStreamReader;
 public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String s = br.readLine();
-		String answer = "";
+		StringBuilder sb = new StringBuilder();
 		
+		String s = br.readLine();
 		for (int i = 0; i < s.length(); i++) {
-			answer += s.charAt(i);
+			sb.append(s.charAt(i));
 			
 			if(s.charAt(i) == 'e') {
-				answer += "e";
+				sb.append('e');
 			}
 			
 		}
 		
-		System.out.println(answer);
+		System.out.println(sb.toString());
 	}
 }
