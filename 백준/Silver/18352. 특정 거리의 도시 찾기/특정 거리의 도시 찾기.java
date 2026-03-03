@@ -37,10 +37,6 @@ public class Main {
 			graph[A].add(B);
 		}
 		
-		for (int i = 1; i < graph.length; i++) {
-			Collections.sort(graph[i]);
-		}
-		
 		dist = new int[N+1];
 		bfs();
 		
